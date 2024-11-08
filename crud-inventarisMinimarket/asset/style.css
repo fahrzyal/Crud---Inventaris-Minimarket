@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Rammetto+One&display=swap');
+
+
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.header nav {
+    height: 65px;
+    margin-bottom: 10px;
+    color: #1C170D;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.col-md-12 {
+    margin-left: 0 !important;
+}
+
+.card-body {
+    border: none !important;
+}
+
+.mb-3 input {
+    border-color: #A1824A;
+}
+
+.mb-3 input::placeholder {
+    color: #A1824A;
+}
+
+.mb-3 select {
+    border-color: #A1824A;
+    color: #A1824A;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.text-center {
+    display: flex;
+    justify-content: end !important;
+}
+
+.text-center button {
+    height: 40px;
+    width: 90px;
+    border-radius: 30px;
+    margin: 10px 3px;
+    border: none;
+}
+
+.btn-simpan {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.btn-hapus {
+    color: #1C170D;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #F5F0E5;
+}
+
+.form-search {
+    margin-top: 15px;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    width: 62rem;
+    border-radius: 40px;
+    border-top-right-radius: 40px !important;
+    border-bottom-right-radius: 40px !important;
+}
+
+
+.btn-cari {
+    font-size: 25px;
+    font-weight: 500;
+    width: 3.5rem;
+    margin-left: 5px;
+    margin-top: 15px;
+    border-radius: 40px;
+    height: 40px;
+    color: #fff;
+}
+
+.btn-riset {
+    width: 5rem;
+    border-radius: 40px;
+    height: 40px;
+    background-color: #F5F0E5;
+    color: #1C170D;
+    font-weight: 700;
+}
+
+footer {
+    font-size: 15px;
+    height: 2rem;
+    bottom: 0;
+    justify-content: center;
+    text-align: center;
+    color: #A1824A;
+}
+
+/* Untuk perangkat dengan lebar antara 601 hingga 1024 piksel (misalnya tablet) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .col-md-12 {
+        width: 100% !important;
+        display: block !important;
+        width: max-content !important;
+    }
+
+    #form-input {
+        width: 70%;
+        margin: auto;
+    }
+
+    #form-data {
+        width: fit-content;
+        margin-top: 2rem;
+        margin-left: 0 !important;
+    }
+
+    #btn-edit {
+        margin-bottom: 3px;
+    }
+}
