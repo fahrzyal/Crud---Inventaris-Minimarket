@@ -6,7 +6,7 @@
     if(isset($_POST['bsimpan'])) {
 
         //Uji apakah data akan di edit atau disimpan baru
-        if(isset($_GET['hal'])== "edit") {
+        if(isset($_GET['hal'])== "edit" && $_GET['hal'] == "edit") {
             //data akan diedit
             $edit = mysqli_query($koneksi, "UPDATE tb_muhammadalfachrozi_brg SET
                                                     Id_brg = '$_POST[tid]',
@@ -82,17 +82,19 @@ if (isset($_GET['hal'])) {
         //Persiapan hapus data 
         $hapus = mysqli_query($koneksi, "DELETE FROM tb_muhammadalfachrozi_brg WHERE Id_brg = '$_GET[id]'");
         //Uji simpan data jika sukses
-        if($hapus) {
-            echo "<script>
-            alert('Hapus data Sukses');
-            document.location='index.php';
-            </script>";
-        } else {
-            echo "<script>
-            alert('Hapus data Gagal');
-            document.location='index.php';
-            </script>";
-        }
+        // if($hapus) {
+        //     // echo "<script>
+        //     //     Swal.fire('Edit data Sukses', '', 'success').then(() => {
+        //     //         window.location='index.php';
+        //     //     });
+        //     // </script>";
+            
+        // } else {
+        //     echo "<script>
+        //     alert('Hapus data Gagal');
+        //     document.location='index.php';
+        //     </script>";  
+        // }
     }
 }
 
@@ -110,6 +112,8 @@ if (isset($_GET['hal'])) {
     <!--BoxIcons-->    
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
   <body>
     <!--Awal Header--> 
@@ -237,7 +241,8 @@ if (isset($_GET['hal'])) {
                                 <td>
                                     <a href="index.php?hal=edit&id=<?= $data['Id_brg'] ?>" class="btn btn-warning" id="btn-edit"><i class='bx bxs-edit'></i></a>
                                     <a href="index.php?hal=hapus&id=<?= $data['Id_brg'] ?>" 
-                                    class="btn btn-danger" onclick="return confirm ('Apakah anda yakin akan hapus data ini?')"><i class='bx bx-trash' ></i></a>
+                                    id="btn-del" class="btn btn-danger" ><i class='bx bx-trash' ></i></a>
+                                    
                                 </td>
                             </tr>
 
@@ -257,7 +262,38 @@ if (isset($_GET['hal'])) {
 
     <!--Bootstrap-->       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
-   
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+       $(document).on('click', '#btn-del', function(e) {
+        e.preventDefault();
+        var link = $(this).attr('href'); // Ambil URL dari tombol hapus
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika user mengkonfirmasi hapus
+                // SweetAlert untuk menunjukkan pesan sukses
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                }).then(() => {
+                    // Setelah SweetAlert selesai, baru lakukan pengalihan halaman untuk menghapus data
+                    window.location.href = link;
+                });
+            }
+        });
+    });
+
+    </script>
+
   </body>
 </html>
